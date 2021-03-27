@@ -8,7 +8,6 @@ import Html.Events exposing (onClick, onInput)
 import Http
 import Employee exposing(Employee, employeeDecoder)
 import AllEmployees exposing(Employees, employeesDecoder)
-import EmployeeByID exposing (InputModel)
 
 -- import Json.Decode exposing (Decoder, field, int, map2, map3, map4, string)
 -- import Json.Encode as Encode
@@ -19,10 +18,6 @@ main = Browser.element
     , view = view
     , subscriptions = subscriptions
     }
-
-type alias Input =
-  { content : String
-  }
 
 type Model
   = Failure String
@@ -98,6 +93,8 @@ view model =
                 , button [ onClick AllEmpsButton ] [ text "Click to show all employees"]
                 , h3 [] [ text ("Find employee på ID") ]
                 , a [href "http://localhost:8000/src/EmployeeByID.elm"] [ text "Here you can find an employee by id"]
+                , h3 [] [ text ("Add Employee") ]
+                , a [href "http://localhost:8000/src/AddEmployee.elm"] [ text "Here you can add an employee"]
                 ]
         Saving msg -> text ("... saving "++msg++"...")
         Failure msg -> text ("Something went wrong: "++msg)

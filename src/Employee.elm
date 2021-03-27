@@ -20,6 +20,17 @@ type alias Department =
     , depDescription: String
     }
 
+type alias Employee2 =
+    { id: Int
+    , firstName: String
+    , lastName: String
+    , email: String
+    , depCode: String
+    , depName: String
+    , depDescription: String
+    , addingResult : String
+    }
+
 departmentDecoder: Decode.Decoder Department
 departmentDecoder =
     Decode.map3 Department
@@ -38,25 +49,18 @@ employeeDecoder =
         (Decode.field "depName" Decode.string)
         (Decode.field "depDescription" Decode.string)
 
-encodeDepartment : Department -> Encode.Value
-encodeDepartment department =
-    Encode.object
-        [ ("depCode", Encode.string department.depCode)
-        , ("depName", Encode.string department.depName)
-        , ("depDescription", Encode.string department.depDescription)
-        ]
-{-
-encodeEmployee : Employee -> Encode.Value
+encodeEmployee : Employee2 -> Encode.Value
 encodeEmployee employee =
     Encode.object
         [ ("id", Encode.int employee.id)
         , ("firstName", Encode.string employee.firstName)
         , ("lastName", Encode.string employee.lastName)
         , ("email", Encode.string employee.email)
-        , ("department", encodeDepartment employee.department)
+        , ("depCode", Encode.string employee.depCode)
+        , ("depName", Encode.string employee.depName)
+        , ("depDescription", Encode.string employee.depDescription)
         ]
 
--}
 
 
 

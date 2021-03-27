@@ -83,7 +83,7 @@ view : InputModel -> Html Msg
 view model =
   div []
     [ input [ placeholder "Employee ID", value model.content, onInput Change ] []
-    , button [onClick EmployeeRequest][text "Tryk på mig"]
+    , button [onClick EmployeeRequest][text "Find employee"]
     , viewEmployee model.employee
     , p[] [a [href "http://localhost:8000/src/Main.elm"] [ text "Go back"]]
     ]
